@@ -1,0 +1,29 @@
+{
+  "name": "next-pokemon-e2e",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/next-pokemon-e2e/src",
+  "targets": {
+    "e2e": {
+      "executor": "@nx/cypress:cypress",
+      "options": {
+        "cypressConfig": "apps/next-pokemon-e2e/cypress.config.ts",
+        "testingType": "e2e",
+        "devServerTarget": "next-pokemon:serve"
+      },
+      "configurations": {
+        "production": {
+          "devServerTarget": "next-pokemon:serve:production"
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["apps/next-pokemon-e2e/**/*.{js,ts}"]
+      }
+    }
+  },
+  "tags": [],
+  "implicitDependencies": ["next-pokemon"]
+}
